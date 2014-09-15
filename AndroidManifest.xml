@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pavantej.imagesearch"
+    package="com.tejuapp.imagesearch"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -27,6 +27,14 @@
         <activity
             android:name="com.tejuapp.imagesearch.activities.ImageDisplayActivity"
             android:label="@string/title_activity_image_display"
+            android:parentActivityName="com.tejuapp.imagesearch.activities.SearchActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tejuapp.imagesearch.activities.SearchActivity" />
+        </activity>
+        <activity
+            android:name="com.tejuapp.imagesearch.activities.SettingActivity"
+            android:label="@string/title_activity_setting"
             android:parentActivityName="com.tejuapp.imagesearch.activities.SearchActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

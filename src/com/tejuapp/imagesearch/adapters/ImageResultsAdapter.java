@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.pavantej.imagesearch.R;
+import com.tejuapp.imagesearch.R;
 import com.squareup.picasso.Picasso;
 import com.tejuapp.imagesearch.model.ImageResult;
 

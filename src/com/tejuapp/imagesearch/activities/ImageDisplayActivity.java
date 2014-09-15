@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import com.pavantej.imagesearch.R;
+import com.tejuapp.imagesearch.R;
 import com.squareup.picasso.Picasso;
 
 public class ImageDisplayActivity extends Activity {

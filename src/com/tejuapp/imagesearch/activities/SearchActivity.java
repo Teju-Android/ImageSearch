@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -22,10 +23,11 @@ import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.pavantej.imagesearch.R;
+import com.tejuapp.imagesearch.R;
 import com.tejuapp.imagesearch.adapters.ImageResultsAdapter;
 import com.tejuapp.imagesearch.listener.EndlessScrollListener;
 import com.tejuapp.imagesearch.model.ImageResult;
+import com.tejuapp.imagesearch.model.ImageSetting;
 
 public class SearchActivity extends Activity {
 
@@ -35,6 +37,12 @@ public class SearchActivity extends Activity {
     private ArrayList<ImageResult> imageResults;
     private ImageResultsAdapter aImageResults;
     private int imageNumber;
+    private ImageSetting settings;
+    final String DEFAULT_SITE = "google.com";
+    final String DEFAULT_SIZE = "medium";
+    final String DEFAULT_COLOR = "white";
+    final String DEFAULT_TYPE = "photo";
+    
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,7 @@ public class SearchActivity extends Activity {
         imageResults = new ArrayList<ImageResult>();
         aImageResults = new ImageResultsAdapter(this, imageResults);
         gvImageResults.setAdapter(aImageResults);
+        settings = new ImageSetting(DEFAULT_SIZE, DEFAULT_COLOR, DEFAULT_TYPE, DEFAULT_SITE);
     }
 
 
@@ -78,6 +87,10 @@ public class SearchActivity extends Activity {
     }
     
     public void onImageSearch(View v){
+    	startSearch();
+    }
+    
+    private void startSearch(){
     	imageNumber = 0;
     	imageResults.clear();
     	populateData();
@@ -86,6 +99,8 @@ public class SearchActivity extends Activity {
     private void populateData(){
     	String query = etQuery.getText().toString();
     	String searchUrl = "https://ajax.googleapis.com/ajax/services/search/images?q="+query+"&v=1.0&rsz=8&start="+imageNumber;
+    	searchUrl += setUrlWithImageSettings();
+    	Log.d("DEBUG","SEARCH IRL IS "+searchUrl);
     	imageNumber += 8;
     	Toast.makeText(this, "Searching for \""+query+"\"", Toast.LENGTH_SHORT).show();
     	AsyncHttpClient client = new AsyncHttpClient();
@@ -103,11 +118,39 @@ public class SearchActivity extends Activity {
 				}
     			Log.d("imageArray", imageResults.toString());
     		}
-    	});
-    	
+    	});	
     }
+    
+    private String setUrlWithImageSettings(){
+    	String url = "&imgsz="+settings.getSize();
+    	url += "&imgcolor="+settings.getColor();
+    	url += "&imgtype="+settings.getType();
+    	url += "&as_sitesearch="+settings.getSite();
+    	return url;
+    }
+    
     private void customLoadMoreDataFromApi(int offset){
     	populateData();
+    }
+    
+    public void onClickSettings(MenuItem mi){
+    	Toast.makeText(this, "Added Item", Toast.LENGTH_SHORT).show();
+    	Intent i=new Intent(this, SettingActivity.class);
+    	i.putExtra("settings", settings);
+    	startActivityForResult(i, 5);
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	// TODO Auto-generated method stub
+    	if(requestCode ==5){
+    		if(resultCode == RESULT_OK){
+    			settings = (ImageSetting) data.getSerializableExtra("settings");
+    			Log.d("HELP-SITE",settings.getSite()+" -----"+settings.getSize());
+    			startSearch();
+    			//Toast.makeText(this, settings.getSize(), Toast.LENGTH_SHORT).show();
+    		}
+    	}
     }
     
 }

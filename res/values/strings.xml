@@ -9,5 +9,11 @@
     <string name="image_title_label">Image Title</string>
     <string name="image_result">Image Result</string>
     <string name="title_activity_image_display">ImageDisplayActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="size_label">Size</string>
+    <string name="color_label">Color</string>
+    <string name="type_label">Type</string>
+    <string name="site_label">Site</string>
+    <string name="submit_label">Submit</string>
 
 </resources>
