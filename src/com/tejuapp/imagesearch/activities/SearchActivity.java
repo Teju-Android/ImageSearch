@@ -52,7 +52,7 @@ public class SearchActivity extends Activity {
         imageResults = new ArrayList<ImageResult>();
         aImageResults = new ImageResultsAdapter(this, imageResults);
         gvImageResults.setAdapter(aImageResults);
-        settings = new ImageSetting(DEFAULT_SIZE, DEFAULT_COLOR, DEFAULT_TYPE, DEFAULT_SITE);
+        settings = new ImageSetting();
     }
 
 
@@ -122,10 +122,15 @@ public class SearchActivity extends Activity {
     }
     
     private String setUrlWithImageSettings(){
-    	String url = "&imgsz="+settings.getSize();
-    	url += "&imgcolor="+settings.getColor();
-    	url += "&imgtype="+settings.getType();
-    	url += "&as_sitesearch="+settings.getSite();
+    	String url="";
+    	if(settings.getSize()!=null)
+    		url +=  "&imgsz="+settings.getSize();
+    	if(settings.getColor()!=null)
+    		url += "&imgcolor="+settings.getColor();
+    	if(settings.getType()!=null)
+    		url += "&imgtype="+settings.getType();
+    	if(settings.getSite()!=null)
+    		url += "&as_sitesearch="+settings.getSite();
     	return url;
     }
     
@@ -135,7 +140,7 @@ public class SearchActivity extends Activity {
     
     public void onClickSettings(MenuItem mi){
     	Toast.makeText(this, "Added Item", Toast.LENGTH_SHORT).show();
-    	Intent i=new Intent(this, SettingActivity.class);
+    	Intent i=new Intent(this, FilterActivity.class);
     	i.putExtra("settings", settings);
     	startActivityForResult(i, 5);
     }

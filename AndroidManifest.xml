@@ -40,6 +40,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tejuapp.imagesearch.activities.SearchActivity" />
         </activity>
+        <activity
+            android:name="com.tejuapp.imagesearch.activities.FilterActivity"
+            android:label="@string/title_activity_filter"
+            android:parentActivityName="com.tejuapp.imagesearch.activities.SearchActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tejuapp.imagesearch.activities.SearchActivity" />
+        </activity>
     </application>
 
 </manifest>

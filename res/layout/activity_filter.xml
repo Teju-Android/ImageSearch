@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilterActivity" >
+
+    <Spinner
+        android:id="@+id/spSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:entries="@array/size_array_label"
+        android:prompt="@string/select_size_label" />
+
+    <Spinner
+        android:id="@+id/spColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spSize"
+        android:entries="@array/color_array_label"
+        android:prompt="@string/select_color_label" />
+
+    <Spinner
+        android:id="@+id/spType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spColor"
+        android:entries="@array/type_array_label"
+        android:prompt="@string/select_type_label" />
+
+    <EditText
+        android:id="@+id/etImageSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spType"
+        android:ems="10"
+        android:hint="@string/search_site_label" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btSubmitFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etImageSite"
+        android:layout_centerHorizontal="true"
+        android:onClick="onSubmit"
+        android:text="@string/submit_label" />
+
+</RelativeLayout>

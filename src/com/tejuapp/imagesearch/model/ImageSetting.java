@@ -16,6 +16,10 @@ public class ImageSetting implements Serializable{
 		this.type = type;
 		this.site = site;
 	}
+	
+	public ImageSetting(){
+		
+	}
 
 	public String getSize() {
 		return size;

@@ -15,5 +15,43 @@
     <string name="type_label">Type</string>
     <string name="site_label">Site</string>
     <string name="submit_label">Submit</string>
+    <string name="select_size_label"> Select Size</string>
+    <string name="select_type_label"> Select Type</string>
+
+    <string-array name="size_array_label">
+        <item>Size Not Selected</item>
+        <item>small</item>
+        <item>medium</item>
+        <item>large</item>
+        <item>extra-large</item>
+    </string-array>
+    <string-array name="type_array_label">
+        <item>Type Not Selected</item>
+        <item>faces</item>
+        <item>photo</item>
+        <item>clipart</item>
+        <item>lineart</item>
+    </string-array>
+
+    <string name="title_activity_filter">Image Filter</string>
+
+    <string name="select_color_label">Select Color</string>
+    
+    <string-array name="color_array_label">
+        <item>Color Not Selected</item>
+        <item>black</item>
+        <item>blue</item>
+        <item>brown</item>
+        <item>gray</item>
+        <item>green</item>
+        <item>orange</item>
+        <item>pink</item>
+        <item>purple</item>
+        <item>red</item>
+        <item>teal</item>
+        <item>white</item>
+        <item>yellow</item>
+    </string-array>
+        <string name="search_site_label">Enter search site</string>
 
 </resources>
