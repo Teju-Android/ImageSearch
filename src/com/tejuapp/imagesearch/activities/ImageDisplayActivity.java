@@ -1,5 +1,6 @@
 package com.tejuapp.imagesearch.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -7,8 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import com.tejuapp.imagesearch.R;
 import com.squareup.picasso.Picasso;
+import com.tejuapp.imagesearch.R;
 
 public class ImageDisplayActivity extends Activity {
 
@@ -28,6 +29,8 @@ public class ImageDisplayActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.image_display, menu);
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
 		return true;
 	}
 
